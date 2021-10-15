@@ -1,8 +1,9 @@
 import TransactionStore from "../types/TransactionStore";
+import { LOGOUT } from "./AuthReducer";
 
-export const LOADING = 'auth/LOADING';
-export const LOAD = 'auth/LOAD';
-export const REQUEST_ERROR = 'auth/REQUEST_ERROR';
+export const LOADING = 'transaction/LOADING';
+export const LOAD = 'transaction/LOAD';
+export const REQUEST_ERROR = 'transaction/REQUEST_ERROR';
 
 
 const initialState : TransactionStore = {
@@ -20,8 +21,7 @@ const TransactionReducer = (state = initialState, action: any) : TransactionStor
     case LOADING:
       return {
         ...state,
-        isLoading: true,
-        errorMessage: null
+        isLoading: true
       }
     case LOAD:
       return {
@@ -30,6 +30,8 @@ const TransactionReducer = (state = initialState, action: any) : TransactionStor
         isLoading: false,
         errorMessage: null
       };
+    case LOGOUT:
+      return initialState;
     case REQUEST_ERROR:
       return {
         ...state,

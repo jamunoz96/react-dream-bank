@@ -15,7 +15,6 @@ const getUser = () : object => {
 const initialState : AuthStore = {
   user: getUser(),
   token: token,
-  isAuthed: token ? true : false,
   errorMessage: null,
   isLoading: false
 };
@@ -32,7 +31,6 @@ const AuthReducer = (state = initialState, action: any) : AuthStore => {
       localStorage.setItem("auth_token", action.payload.token);
         return {
           ...state,
-          isAuthed: true,
           token: action.payload.token,
           user: null,
           errorMessage: null,
@@ -50,7 +48,6 @@ const AuthReducer = (state = initialState, action: any) : AuthStore => {
       localStorage.removeItem("auth_user");
       return {
         ...state,
-        isAuthed: false,
         token: null,
         user: null,
         errorMessage: null,

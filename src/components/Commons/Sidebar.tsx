@@ -1,8 +1,11 @@
 import React from "react"
+import { logoutAction } from "src/redux/actions/AuthActions"
+import { globalDispatch } from "src/redux/utils/globalDispatch"
 import coin from "../../assets/icons/coin.png"
 import poweroff from "../../assets/icons/power-off.png"
 
 const Sidebar = () => {
+    const handleLogout = () => globalDispatch(logoutAction());
     return <div className="sidebar">
         <div className="menu">
             <img className="coin-logo" src={coin} alt="" />
@@ -27,7 +30,7 @@ const Sidebar = () => {
             </ul>
         </div>
         <div className="logout">
-            <img src={poweroff} alt="" />
+            <img src={poweroff} alt="" onClick={handleLogout} />
         </div>
     </div>
 }

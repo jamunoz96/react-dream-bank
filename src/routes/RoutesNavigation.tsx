@@ -1,11 +1,9 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom';
+import All from 'src/components/Account/All';
+import Summary from 'src/components/Account/Summary';
 
 const RoutesNavigation = () => {
-
-  const Summary = React.lazy(() => import("src/components/Account/Summary"));
-  const All = React.lazy(() => import("src/components/Account/All"));
-
     return (
         <div>
           <Route path="/account/summary" component={Summary} />
