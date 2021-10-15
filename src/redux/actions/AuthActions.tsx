@@ -1,4 +1,3 @@
-import { AnyAction } from 'redux';
 import { apiGetUser, apiLogin } from '../../services/Auth/';
 import { GET_USER, LOADING, LOGIN, LOGOUT, REQUEST_ERROR } from '../reducers/AuthReducer';
 import { AppDispatch } from '../types/AppDispatch';

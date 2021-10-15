@@ -1,21 +1,28 @@
-import { useEffect } from "react";
-import { getTransactions } from "../../redux/actions/TransactionActions";
-import TransactionStore from "../../redux/types/TransactionStore";
-import { globalDispatch } from "../../redux/utils/globalDispatch";
-import icon from "../../assets/icons/in.png";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { getTransactions } from "src/redux/actions/TransactionActions";
+import { globalDispatch } from "src/redux/utils/globalDispatch";
+import icon from "src/assets/icons/in.png";
+import Loading from "../Commons/Loading";
+import { useSelector } from "react-redux";
+import { AppState } from "src/redux/types/AppState";
 
-const Transactions = ({ transactions } : any ) => {
-    const { isLoading, errorMessage, data } : TransactionStore = transactions;
+const Summary = () => {
+    
+    const {data, errorMessage, isLoading} = useSelector((state : AppState) => state.transactions);
     useEffect(() => {
-        globalDispatch(getTransactions());
-    }, []);
+        if(!data.length && !errorMessage && !isLoading) {
+            globalDispatch(getTransactions());
+        }
+    }, [data, errorMessage, isLoading]);
 
     return <div className="transactions">
         <div className="main-account">
             <b>37847387**** - MAENGUNE</b>
-            <img className="icon" src={icon} alt="" />
+            <Link to="/account/all">
+                <img className="icon" src={icon} alt="" />
+            </Link>
         </div>
-
 
         <div className="transaction-list">
             <div className="bb">
@@ -46,11 +53,11 @@ const Transactions = ({ transactions } : any ) => {
                 </tbody>
             </table>
             {
-                isLoading ? "Loading transactions..." : errorMessage
+                isLoading ? <Loading title="Transactions" /> : errorMessage
             }
         </div>
 
     </div>
 }
 
-export default Transactions
+export default Summary

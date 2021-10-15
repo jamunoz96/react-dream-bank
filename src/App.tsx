@@ -6,13 +6,11 @@ import Routes from './routes/Routes'
 import './App.scss';
 
 const App = () => {
-  return (
-    <Provider store = { store }>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
-    </Provider>
-  )
+  return <Provider store={store}>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+  </Provider>
 }
 
 export default App;

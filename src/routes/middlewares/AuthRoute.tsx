@@ -5,7 +5,7 @@ import { AppState } from "../../redux/types/AppState";
 
 const AuthRoute = ({ component: Component, ...rest } : any) => {
     const {token, user} : AuthStore = useSelector((state: AppState) => state.auth);
-    return (
+    return <>
         <Route {...rest} render={ props =>
                 token && user ? (
                     <Component {...props} />
@@ -14,7 +14,7 @@ const AuthRoute = ({ component: Component, ...rest } : any) => {
                 )
             }
         />
-    );
+    </>;
 }
 
 export default AuthRoute;

@@ -8,7 +8,7 @@ const Authenticated = ({ component: Component, ...rest } : any) => {
     return (
         <Route {...rest} render={ props =>
                 token && user ? (
-                    <Redirect to="/" />
+                    <Redirect to="/account/summary" />
                 ) : (
                     <Component {...props} />
                 )
