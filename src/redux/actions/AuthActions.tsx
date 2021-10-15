@@ -1,3 +1,4 @@
+import { AnyAction } from 'redux';
 import { apiGetUser, apiLogin } from '../../services/Auth/';
 import { GET_USER, LOADING, LOGIN, LOGOUT, REQUEST_ERROR } from '../reducers/AuthReducer';
 import { AppDispatch } from '../types/AppDispatch';
@@ -41,7 +42,6 @@ export const loginAction = (form : object) => (dispatch: AppDispatch) => {
 
 export const getUserAction = () => (dispatch: AppDispatch, getState: any) => {
     const { user } : AuthStore  = getState().auth;
-    console.log(user)
     if(!user){
         dispatch(_LOADING());
         apiGetUser()

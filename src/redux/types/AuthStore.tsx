@@ -1,5 +1,5 @@
 export default interface AuthStore {
-    user: object,
+    user: any,
     token: string | null,
     isAuthed: boolean,
     errorMessage: string | null

@@ -1,2 +1,2 @@
 import { store } from "../store";
-export const globalDispatch = (action: Function) => store.dispatch(action);
+export const globalDispatch = (action: any) => store.dispatch(action);

@@ -20,7 +20,7 @@ const initialState : AuthStore = {
   isLoading: false
 };
 
-const AuthReducer = (state = initialState, action: any) => {
+const AuthReducer = (state = initialState, action: any) : AuthStore => {
   switch (action.type) {
     case LOADING:
       return {

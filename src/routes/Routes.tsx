@@ -7,15 +7,13 @@ import Login from '../pages/Login/Login'
 
 const Routes = () => {
     return (
-        <div className="container mt-3">
-          <Switch>
-            <AuthRoute exact path="/" component={Home} />
-            <Authenticated path="/login" component={Login} />
-            <Route>
-              <Redirect to="/login" />
-            </Route>
-          </Switch>
-        </div>
+        <Switch>
+          <AuthRoute exact path="/" component={Home} />
+          <Authenticated path="/login" component={Login} />
+          <Route>
+            <Redirect to="/login" />
+          </Route>
+        </Switch>
     );
 }
 
