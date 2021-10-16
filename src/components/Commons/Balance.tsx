@@ -1,6 +1,7 @@
 import React from "react"
+import AuthStore from "src/redux/types/AuthStore"
 
-const Balance = ({ user } : any) => {
+const Balance = ({ user } : AuthStore) => {
     return <div className="balance">
         <div className="balance-content">
             <img className="avatar-2" src={user?.avatar} alt="" />

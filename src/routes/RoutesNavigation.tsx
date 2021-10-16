@@ -8,8 +8,8 @@ const RoutesNavigation = () => {
         <div>
           <Route path="/account/summary" component={Summary} />
           <Route path="/account/all" component={All} />
-          <Route>
-            <Redirect to="summary" />
+          <Route exact path="/account">
+            <Redirect to="/account/summary" />
           </Route>
         </div>
     );

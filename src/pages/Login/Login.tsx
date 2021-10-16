@@ -1,6 +1,8 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import BlankTemplate from "src/components/Commons/BlankTemplate";
+import Loading from "src/components/Commons/Loading";
 import * as Yup from "yup";
 import { getUserAction, loginAction } from "../../redux/actions/AuthActions";
 import { AppState } from "../../redux/types/AppState";
@@ -8,10 +10,10 @@ import AuthStore from "../../redux/types/AuthStore";
 import { globalDispatch } from "../../redux/utils/globalDispatch";
 
 const Login = () => {
-    const { token, isLoading, errorMessage } : AuthStore = useSelector((state : AppState) => state.auth);
+    const { token, isLoading, errorMessage }: AuthStore = useSelector((state: AppState) => state.auth);
 
     useEffect(() => {
-        if(token) globalDispatch(getUserAction());
+        if (token) globalDispatch(getUserAction());
     }, [token]);
 
     const handleValidation = () => {
@@ -30,13 +32,9 @@ const Login = () => {
         password: "cityslicka"
     };
 
-    return (
-        <div className="col-md-12">
-            <div className="card card-container">
-                <img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                    alt="profile-img"
-                    className="profile-img-card" />
-
+    return <>
+        <BlankTemplate>
+            <div>
                 <Formik initialValues={initialValues}
                     validationSchema={handleValidation}
                     onSubmit={handleLogin}>
@@ -54,33 +52,33 @@ const Login = () => {
                         <div className="form-group">
                             <label>Password</label>
                             <Field name="password" type="password" className="form-control" />
+                            <a href="javascript:;" className="forget-password">Forget password?</a>
                             <ErrorMessage
                                 name="password"
                                 component="div"
                                 className="badge bg-warning text-dark" />
                         </div>
 
-                        <div className="d-grid gap-2 mt-3">
-                            <button type="submit" className="btn btn-primary" disabled={isLoading}>
-                                {isLoading && (
-                                    <span className="me-2 spinner-border spinner-border-sm"></span>
-                                )}
-                                <span>Login</span>
-                            </button>
-                        </div>
-
                         {errorMessage && (
                             <div className="form-group">
-                                <div className="alert alert-danger" role="alert">
+                                <div className="alert-error" >
                                     {errorMessage}
                                 </div>
                             </div>
                         )}
+
+                        <div className="d-grid gap-2 mt-3">
+                            <button type="submit" className="btn-blue" disabled={isLoading}>
+                                <span>Login</span>
+                            </button>
+                            {isLoading && <Loading title="Checking" />}
+                        </div>
+
                     </Form>
                 </Formik>
             </div>
-        </div>
-    );
+        </BlankTemplate>
+    </>;
 }
 
 export default Login;

@@ -1,8 +1,9 @@
 import React from "react";
+import AuthStore from "src/redux/types/AuthStore";
 import noti from "../../assets/icons/bell.png";
 import chat from "../../assets/icons/writing.png";
 
-const Header = ({ user } : any) => {
+const Header = ( { user } : AuthStore) => {
     return <header className="header">
         <div className="center-vertical">
         <img className="icon" src={noti} alt="" />

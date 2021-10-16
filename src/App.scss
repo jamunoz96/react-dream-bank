@@ -1,13 +1,21 @@
 * {
+  box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  // width: 100%;
   font-family: sans-serif;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
 }
 
 .sidebar {
   width: 15%;
-  background-color: #03295d;
+  background-color: #052653;
   height: 100%;
   position: fixed;
 }
@@ -89,8 +97,6 @@
   width: 90px;
   height: 90px;
   border-radius: 50px;
-  // margin-left: 15px;
-  // margin-top: 20px;
 }
 
 .balance-content {
@@ -103,14 +109,10 @@
 }
 
 .balance-text {
-  // margin-top: 40px;
   width: 40%;
 }
 
 .balance-text-2 {
-  // float: right;
-  // margin-top: 30px;
-  // padding-left: 20px;
   width: 25%;
 }
 
@@ -133,7 +135,6 @@
 }
 
 .btn-balance {
-  // margin-top: 10px;
   margin-bottom: 5px;
   margin-top: 5px;
   width: 100%;
@@ -161,6 +162,10 @@
 
 .text-blue {
   color: #0247cb;
+}
+
+.text-gray {
+  color: #aaa;
 }
 
 .bb {
@@ -202,19 +207,22 @@
 // SIDEBAR
 
 .logout {
-  text-align: center;
+  position: absolute;
+  left: 0; 
+  right: 0;
+  bottom: 50px;
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 50px;
 }
 
 .logout img {
-  width: 50px;
-  position: relative;
-  bottom: -100px;
+  width: 100%;
   cursor: pointer;
 }
 
 .menu {
   padding-top: 40px;
-  padding-left: 40px;
   color: #87a3a3;
 }
 
@@ -224,21 +232,26 @@
 
 .menu ul li {
   margin-top: 15px;
+  padding: 15px 40px;
+  width: 100%;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: #87a3a3;
 }
 
 .menu h4 {
   padding-bottom: 10px;
   padding-top: 30px;
+  padding-left: 40px;
   color: #3da7a7;
 }
 
 .coin-logo {
   width: 100px;
-  text-align: center;
-}
-
-.loading-center {
-  
+  display: block;
+  margin: auto;
 }
 
 .loading {
@@ -254,7 +267,21 @@
   float: left;
 }
 
-.loading b {
-  // float: right;
-  
+button {
+  cursor: pointer;
+}
+
+.alert-error {
+  background-color: #ffdddd;
+  width: 50%;
+  position: relative;
+  align-items: center;
+  margin: auto;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+li.active {
+  border-left: 3px solid #02bbf1;
+  background: linear-gradient(to right, rgba(17,51,100,255) 0%, rgba(255,93,177,0) 100%);
 }

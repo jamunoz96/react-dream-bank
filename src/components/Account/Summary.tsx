@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { getTransactions } from "src/redux/actions/TransactionActions";
-import { globalDispatch } from "src/redux/utils/globalDispatch";
 import icon from "src/assets/icons/in.png";
 import Loading from "../Commons/Loading";
 import { useSelector } from "react-redux";
@@ -10,16 +8,11 @@ import { AppState } from "src/redux/types/AppState";
 const Summary = () => {
     
     const {data, errorMessage, isLoading} = useSelector((state : AppState) => state.transactions);
-    useEffect(() => {
-        if(!data.length && !errorMessage && !isLoading) {
-            globalDispatch(getTransactions());
-        }
-    }, [data, errorMessage, isLoading]);
 
     return <div className="transactions">
         <div className="main-account">
             <b>37847387**** - MAENGUNE</b>
-            <Link to="/account/all">
+            <Link to="all">
                 <img className="icon" src={icon} alt="" />
             </Link>
         </div>
