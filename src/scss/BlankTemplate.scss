@@ -1,4 +1,3 @@
-
 .blankTemplate {
     margin-top: 20px;
     width: 100%;
@@ -7,6 +6,7 @@
     margin-right: auto;
     margin-left: auto;
 }
+
 .blankTemplate .banner-top{
     background-image: url(../assets/images/banner-blank.jpg);
     background-position: center;
@@ -54,7 +54,7 @@
 }
 
 .blankTemplate h1,h2 {
-    color:#004ac6;
+    color:#004ac6 !important;
 }
 
 .blankTemplate p {
@@ -127,9 +127,10 @@
       justify-content: center;
   }
 
-  .blankTemplate a.forget-password{
+  .blankTemplate span.forget-password{
     color: #5087e4;
     font-size: 0.7rem;
     position:absolute;
     margin: 16px 0 0 -100px;
+    cursor: pointer;
   }

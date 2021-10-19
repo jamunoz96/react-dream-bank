@@ -1,9 +1,5 @@
 export default interface TransactionStore {
-    page: number,
-    per_page: number,
-    total: number,
-    total_pages: number,
-    data: object[],
+    transactions: any[],
     errorMessage: string | null
     isLoading: boolean
 }

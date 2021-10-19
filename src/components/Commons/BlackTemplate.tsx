@@ -1,9 +1,9 @@
 import React from "react"
 import { PropsChildren } from "src/types/types"
-import "src/scss/BlankTemplate.scss";
+import "src/scss/BlackTemplate.scss";
 
-const BlankTemplate = ({ children }: PropsChildren) => {
-    return <div className="blankTemplate">
+const BlackTemplate = ({ children }: PropsChildren) => {
+    return <div className="blackTemplate">
         <div className="logo"></div>
         <div className="banner-top"></div>
 
@@ -12,4 +12,4 @@ const BlankTemplate = ({ children }: PropsChildren) => {
     </div>
 }
 
-export default React.memo(BlankTemplate)
+export default React.memo(BlackTemplate)

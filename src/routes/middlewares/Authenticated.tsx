@@ -4,10 +4,10 @@ import AuthStore from "../../redux/types/AuthStore";
 import { AppState } from "../../redux/types/AppState";
 
 const Authenticated = ({ component: Component, ...rest } : any) => {
-    const {token, user} : AuthStore = useSelector((state: AppState) => state.auth);
+    const {user} : AuthStore = useSelector((state: AppState) => state.auth);
     return (
         <Route {...rest} render={ props =>
-                token && user ? (
+                user?.id ? (
                     <Redirect to="/account/summary" />
                 ) : (
                     <Component {...props} />

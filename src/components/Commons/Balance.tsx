@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import AuthStore from "src/redux/types/AuthStore"
 
 const Balance = ({ user } : AuthStore) => {
@@ -15,8 +16,12 @@ const Balance = ({ user } : AuthStore) => {
                 <hr className="line-balance" />
             </div>
             <div className="balance-text-3">
-                <button className="btn-line btn-balance" type="button">Request new product</button>
-                <button className="btn-line btn-balance" type="button">Make a transfer</button>
+                <Link className="btn-line btn-balance" to="/new-product" >
+                    Request new product
+                </Link>
+                <Link className="btn-line btn-balance" to="/make-transfer" >
+                    Make a transfer
+                </Link>
             </div>
         </div>
     </div>

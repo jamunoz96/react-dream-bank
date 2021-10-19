@@ -1,4 +1,4 @@
-import loading from '../../assets/icons/loading.gif'
+import loading from '../../assets/loadings/loading.gif'
 const Loading = ({title = ""}) => {
     return <div className="loading">
         <img src={loading} alt="" />

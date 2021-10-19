@@ -1,18 +1,15 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom';
-import All from 'src/components/Account/All';
+import { Route } from 'react-router-dom';
+import Detail from 'src/components/Account/Detail';
 import Summary from 'src/components/Account/Summary';
+import Transaction from 'src/components/Account/Transaction';
 
 const RoutesNavigation = () => {
-    return (
-        <div>
-          <Route path="/account/summary" component={Summary} />
-          <Route path="/account/all" component={All} />
-          <Route exact path="/account">
-            <Redirect to="/account/summary" />
-          </Route>
-        </div>
-    );
+    return <>
+        <Route exact path="/account/summary" component={Summary} />
+        <Route exact path="/account/detail/:id" component={Detail} />
+        <Route exact path="/account/detail/:id/transaction/:id" component={Transaction} />
+    </>
 }
 
 export default RoutesNavigation;

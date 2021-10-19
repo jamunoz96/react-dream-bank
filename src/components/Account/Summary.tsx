@@ -1,47 +1,61 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import icon from "src/assets/icons/in.png";
-import Loading from "../Commons/Loading";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { AppState } from "src/redux/types/AppState";
+import Loading from "../Commons/Loading";
+import icon1 from 'src/assets/icons/pen.png'
+import icon2 from 'src/assets/icons/savings.png'
+import { globalDispatch } from "src/redux/utils/globalDispatch";
+import { getAccounts } from "src/redux/actions/AccountActions";
+import { encrypProduct } from "src/utils/text";
+import { Link } from "react-router-dom";
 
 const Summary = () => {
-    
-    const {data, errorMessage, isLoading} = useSelector((state : AppState) => state.transactions);
+
+    const icons = [icon1, icon2];
+    const {accounts, errorMessage, isLoading, loaded} = useSelector((state : AppState) => state.account);
+
+    useEffect(() => {
+        if(!loaded) globalDispatch(getAccounts());
+    }, []);
 
     return <div className="transactions">
-        <div className="main-account">
-            <b>37847387**** - MAENGUNE</b>
-            <Link to="all">
-                <img className="icon" src={icon} alt="" />
-            </Link>
-        </div>
-
         <div className="transaction-list">
             <div className="bb">
-                <h4 className="text-blue">Last Transations</h4>
+                <h4 className="text-gray">ALL ACCOUNTS</h4>
             </div>
             <table>
                 <thead>
                     <tr>
-                        <th className="text-blue">Date</th>
-                        <th className="text-blue">Description</th>
+                        <td width="8%"><br /></td>
+                        <th className="text-blue">Type</th>
+                        <th className="text-blue">Account Name</th>
+                        <th className="text-blue">Status</th>
                         <th className="text-blue">Currency</th>
-                        <th className="text-blue">Value</th>
                         <th className="text-blue">Balance</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        data.map((transaction: any) => {
-                            return <tr key={transaction.id}>
-                                <td>{transaction.id}</td>
-                                <td>{transaction.name}</td>
-                                <td>{transaction.year}</td>
-                                <td>{transaction.color}</td>
-                                <td>{transaction.pantone_value}</td>
+                        accounts.map((account: any, index : number) => {
+                            return <tr key={account.id}>
+                                <td>
+                                    <Link to={{ pathname: 'detail/' + account.id, state: { account } }} >
+                                        <img className="icon" src={icons[index%2]} alt="" />
+                                    </Link>
+                                </td>
+                                <td>{account.name}</td>
+                                <td>{ encrypProduct(account.number, account.product)}</td>
+                                <td>{account.status}</td>
+                                <td>{account.currency}</td>
+                                <td>${account.income}</td>
                             </tr>
                         })
+                    }
+                    {
+                        !accounts.length && !errorMessage && loaded &&
+                        <tr>
+                            <td colSpan={5}>No data</td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -49,7 +63,6 @@ const Summary = () => {
                 isLoading ? <Loading title="Transactions" /> : errorMessage
             }
         </div>
-
     </div>
 }
 
