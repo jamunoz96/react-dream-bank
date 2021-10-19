@@ -2,7 +2,7 @@ FROM node:latest
 ENV NODE_ENV=production
 ENV PORT=80
 WORKDIR /app
-COPY ..
+COPY . .
 RUN npm install --silent
 EXPOSE 80
 CMD ["npm","start"]
